@@ -29,12 +29,14 @@ func InitDB() *gorm.DB {
 			SingularTable: true,
 		}})
 	if err != nil {
-		panic(fmt.Sprintf("Db open error, err:%+v", err.Error()))
+		fmt.Printf("Db open error, err:%+v", err.Error())
+		return nil
 	}
 
 	sqlDB, err := db.DB()
 	if err != nil {
-		panic(fmt.Sprintf("DB init error, err:%+v", err.Error()))
+		fmt.Printf("DB init error, err:%+v", err.Error())
+		return nil
 	}
 
 	sqlDB.SetMaxIdleConns(100)

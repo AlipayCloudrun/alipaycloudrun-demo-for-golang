@@ -22,7 +22,7 @@ func (r *RedisHandler) Set(ctx *gin.Context) {
 
 	err := r.redisService.Set(key, value)
 	if err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{
+		ctx.JSON(http.StatusOK, gin.H{
 			"success": false,
 			"data":    "redis set fail, reason is " + err.Error(),
 		})
@@ -39,7 +39,7 @@ func (r *RedisHandler) Get(ctx *gin.Context) {
 
 	value, err := r.redisService.Get(key)
 	if err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{
+		ctx.JSON(http.StatusOK, gin.H{
 			"success": false,
 			"data":    "redis get fail, reason is " + err.Error(),
 		})
