@@ -267,7 +267,7 @@
                     $("#tab").append(str);
                 }
             } else {
-                $("#dbError").val("数据库异常,请参照项目目录下README.md文件配置数据库")
+                $("#dbError").html("数据库异常,请参照项目目录下<a href='https://github.com/AlipayCloudrun/alipaycloudrun-demo-for-golang'>README.md</a>文件配置数据库");
             }
         });
     }
@@ -325,7 +325,7 @@
             contentType: false,//阻止jquery修改formData数据的类型
         }).done(function (res) {
             if (res.success === false || res.data === null) {
-                $("#ossError").val("数据库异常,请参照项目目录下README.md文件配置数据库")
+                $("#ossError").html("数据库异常,请参照项目目录下<a href='https://github.com/AlipayCloudrun/alipaycloudrun-demo-for-golang'>README.md</a>文件配置数据库")
             }
             testQueryList(false);
         });
@@ -338,7 +338,7 @@
             url: "/file/delete?folder=" + folder + "&fileName=" + fileName + getParams(true),
             success(data) {
                 if (data.success === false) {
-                    $("#ossError").val("oss异常,请参照项目目录下README.md文件配置数据库")
+                    $("#ossError").html("oss异常,请参照项目目录下<a href='https://github.com/AlipayCloudrun/alipaycloudrun-demo-for-golang'>README.md</a>文件配置数据库")
                 }
                 testQueryList(false);
             }
@@ -359,7 +359,7 @@
             })
         }).done(function (res) {
             if (res.success === false) {
-                $("#dbError").val("数据库异常,请参照项目目录下README.md文件配置数据库")
+                $("#dbError").html("数据库异常,请参照项目目录下<a href='https://github.com/AlipayCloudrun/alipaycloudrun-demo-for-golang'>README.md</a>文件配置数据库")
             }
             testDatabase(false);
         });
@@ -372,7 +372,7 @@
             url: "/database/deleteRecord?id=" + id + getParams(true),
             success(data) {
                 if (data.success === false || data.data === null) {
-                    $("#dbError").val("数据库异常,请参照项目目录下README.md文件配置数据库")
+                    $("#dbError").html("数据库异常,请参照项目目录下<a href='https://github.com/AlipayCloudrun/alipaycloudrun-demo-for-golang'>README.md</a>文件配置数据库")
                 }
                 testDatabase(false);
             }
@@ -415,8 +415,8 @@
             async: false,
             success(res) {
                 if (!res.success) {
-                    $("#redisError").val(
-                        "Redis异常,请参照项目目录下README.md文件配置Redis"
+                    $("#redisError").html(
+                        "Redis异常,请参照项目目录下<a href='https://github.com/AlipayCloudrun/alipaycloudrun-demo-for-golang'>README.md</a>文件配置Redis"
                     );
                     $("#value").val("赋值失败");
                     result = false;
@@ -438,8 +438,8 @@
             url: "/redis/get?key=" + key + getParams(true),
             success(res) {
                 if (!res.success) {
-                    $("#redisError").val(
-                        "Redis异常,请参照项目目录下README.md文件配置Redis"
+                    $("#redisError").html(
+                        "Redis异常,请参照项目目录下<a href='https://github.com/AlipayCloudrun/alipaycloudrun-demo-for-golang'>README.md</a>文件配置Redis"
                     );
                     $("#value").val("取值失败");
                 } else if (res.data == null || res.data == '') {

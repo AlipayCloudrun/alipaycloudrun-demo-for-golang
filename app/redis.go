@@ -22,7 +22,8 @@ func InitRedis() *redis.Client {
 
 	_, err := rdb.Ping().Result()
 	if err != nil {
-		panic(fmt.Sprintf("redis open error, err:%+v", err.Error()))
+		fmt.Printf("redis open error, err:%+v", err.Error())
+		return nil
 	}
 
 	return rdb

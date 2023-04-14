@@ -21,7 +21,7 @@ func NewRecordHandler(dbService service.IDbService) RecordHandler {
 func (r *RecordHandler) GetList(c *gin.Context) {
 	list, err := r.dbService.FetchList()
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
+		c.JSON(http.StatusOK, gin.H{
 			"success": false,
 			"data":    err.Error(),
 		})
@@ -40,7 +40,7 @@ func (r *RecordHandler) AddRecord(c *gin.Context) {
 
 	err := r.dbService.AddRecord(&recordInfo)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
+		c.JSON(http.StatusOK, gin.H{
 			"success": false,
 			"data":    err.Error(),
 		})
@@ -55,7 +55,7 @@ func (r *RecordHandler) DeleteRecord(c *gin.Context) {
 	idStr := c.Query("id")
 	id, err := strconv.ParseInt(idStr, 10, 32)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
+		c.JSON(http.StatusOK, gin.H{
 			"success": false,
 			"data":    err.Error(),
 		})
