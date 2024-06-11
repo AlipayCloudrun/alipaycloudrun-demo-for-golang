@@ -18,7 +18,7 @@ RUN GOOS=linux go build -o main .
 
 
 # 选用运行时所用基础镜像（GO语言选择原则：尽量体积小、包含基础linux内容的基础镜像）
-FROM alpine:3.13
+FROM registry.cloudrun.cloudbaseapp.cn/cloudrun/alpine:3.16
 
 # 暴露端口
 # 此处端口必须与构建小程序服务端时填写的服务端口和探活端口一致，不然会部署失败
